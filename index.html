@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lista de tareas</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&family=Source+Sans+Pro&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/custom.css" />
+  </head>
+
+  <body>
+    <header class="hero">
+      <nav class="navbar navbar-items items-center">
+        <a class="brand" href="#">newNotes</a>
+        <a class="show-menu" id="show" href="">menu</a>
+        <div
+        class="flex-row items-center justify-center ml-auto responsive-content"
+        id="resp-content"
+        >
+        <a href="#" id="form-note">Crear nota</a>
+        <button class="btn btn-danger btn-circle close-menu" id="close">
+            <svg
+            class="w-6 h-6"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+            >
+            <path
+                fill-rule="evenodd"
+                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                clip-rule="evenodd"
+            ></path>
+            </svg>
+        </button>
+        </div>
+    </nav>
+    <div class="hero-text flex-column justify-center">
+      <h1 class="text-center">Notas creadas</h1>
+      <form action="#" id="search-form">
+        <div class="form-group flex-column">
+          <label class="question" for="search-input">Search</label>
+          <input
+            class="control"
+            name="search-input"
+            type="text"
+            id="search-input"
+            placeholder="Insert here a search keyword"
+          />
+        </div>
+        <div class="grid-container gap-2">
+          <div class="form-group flex-column">
+            <label class="question" for="alphabetic-order">Alphabetic</label>
+            <select name="alphabetic-order" id="alphabetic-order">
+              <option value="">-- Select a category --</option>
+              <option value="asc">Asc</option>
+              <option value="desc">Desc</option>
+            </select> 
+          </div>
+        </div>
+      </form>
+      <div id="random-content">
+        
+      </div>
+    </div>
+    </header>
+    <div class="modal hidden" id="modal">
+      <div class="modal-content">
+        <div class="flex-row justify-end items-center">
+          <button class="btn btn-danger btn-circle" id="delete-button">
+            <svg
+              class="w-6 h-6"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+          </button>
+        </div>
+        <div class="bg-white card">
+          <div class="card-body" id="modal-body">
+            <h2 class="text-center" id="form-title">Crear nota</h2>
+            <form action="" id="create-note">
+              <div class="form-group flex-column">
+                <label class="question" for="name">Nombre de la nota:</label>
+                <input class="control" name="name" type="text" id="name" />
+              </div>
+              <div class="form-group flex-column">
+                <p class="question">Contenido:</p>
+                <textarea name="content" id="editor"></textarea>
+              </div>
+              <div class="form-group">
+                <button
+                  class="btn btn-lg btn-success btn-full"
+                  id="submit"
+                  type="submit"
+                >
+                  CREAR NOTA
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <main class="container">
+      <article class="grid-container gap-2" id="notes">
+      </article>
+    </main>
+    <div id="root"></div>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="./js/addons/purify.min.js"></script>
+    <script src="./js/app.js" type="module"></script>
+  </body>
+</html>
