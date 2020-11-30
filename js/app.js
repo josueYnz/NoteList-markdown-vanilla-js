@@ -49,9 +49,8 @@ import * as event from "./functions/simpleEvents.js";
   // print notes when the window browser load
   ui.printNotes(notes.getNotes(), notesContainer);
 
-  const alphabeticOrder = document.getElementById("alphabetic-order");
-
-  alphabeticOrder.addEventListener("change", action.order);
+  const orderNotes = document.getElementById("notes-sort");
+  orderNotes.addEventListener("change", action.order);
 
 
   // select the search input

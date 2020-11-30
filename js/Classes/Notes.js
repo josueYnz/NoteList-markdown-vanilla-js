@@ -51,7 +51,7 @@ class Notes {
       return element.name.match(regex) || element.note.match(regex);
     });
   }
-  sortAlphabetic(type) {
+  sortNotes(type) {
     const result = Array.from(this.notesElements);
     switch (type) {
       case "asc":
@@ -62,6 +62,16 @@ class Notes {
       case "desc":
         return result.sort((a, b) => {
           return b.name[0].localeCompare(a.name[0]);
+        });
+
+      case "recent":
+        return result.sort((a, b) => {
+          return a.id - b.id;
+        });
+
+      case "last":
+        return result.sort((a, b) => {
+          return b.id - a.id;
         });
 
       default:

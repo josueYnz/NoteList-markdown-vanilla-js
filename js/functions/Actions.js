@@ -151,9 +151,9 @@ function loadEdition({ name, markdown, id }) {
 }
 function order(e) {
   e.preventDefault();
-  const order = document.getElementById("alphabetic-order").value;
+  const order = document.getElementById("notes-sort").value;
 
-  ui.printNotes(notes.sortAlphabetic(order), notesContainer);
+  ui.printNotes(notes.sortNotes(order), notesContainer);
 }
 function deleteNote(id) {
   const confirmAction = confirm("¿Estas seguro?");
