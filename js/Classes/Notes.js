@@ -24,6 +24,7 @@ class Notes {
       date,
       id,
     };
+
     // add objects in notesElements
     this.notesElements = [...this.notesElements, userNote];
     // notesElements to localStorage
@@ -51,17 +52,17 @@ class Notes {
     });
   }
   sortAlphabetic(type) {
-    const result = this.notesElements;
+    const result = Array.from(this.notesElements);
     switch (type) {
       case "asc":
-        return result.sort((a, b) =>
-          a.name[0].localeCompare(b.name[0])
-        );
+        return result.sort((a, b) => {
+          return a.name[0].localeCompare(b.name[0]);
+        });
 
       case "desc":
-        return result.sort((a, b) =>
-          b.name[0].localeCompare(a.name[0])
-        );
+        return result.sort((a, b) => {
+          return b.name[0].localeCompare(a.name[0]);
+        });
 
       default:
         return this.notesElements;
