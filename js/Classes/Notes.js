@@ -1,14 +1,9 @@
 import { arrayData } from "../functions/helpers.js";
 // notes controller
 class Notes {
-  constructor(categories = "") {
-    // tomar un enfoque más reactivo.
-    // if exist notes in localStorage
-    this.notesElements = JSON.parse(localStorage.getItem("notes")) || [];
-    this.categories = categories;
-  }
+  _notesElements = JSON.parse(localStorage.getItem("notes")) || [];
 
-  addNote({ name, note, date, id }) {
+  addNote({ name, note, date, id, category = "Uncategory" }) {
     // markdow to html
     const convertToHTML = marked(note);
     // purify the new html
@@ -22,30 +17,31 @@ class Notes {
       name: newName,
       note: purifyHTML,
       markdown: note,
+      category,
       date,
       id,
     };
 
     // add objects in notesElements
-    this.notesElements = [...this.notesElements, userNote];
+    this._notesElements = [...this._notesElements, userNote];
     // notesElements to localStorage
-    localStorage.setItem("notes", JSON.stringify(this.notesElements));
+    localStorage.setItem("notes", JSON.stringify(this._notesElements));
   }
   getNotes() {
-    return this.notesElements;
+    return this._notesElements;
   }
   getRandomNote() {
-    const arrHaveData = arrayData(this.notesElements);
+    const arrHaveData = arrayData(this._notesElements);
     if (arrHaveData) {
-      const randomPoint = Math.floor(Math.random() * this.notesElements.length);
-      return [this.notesElements[randomPoint]];
+      const randomPoint = Math.floor(Math.random() * this._notesElements.length);
+      return [this._notesElements[randomPoint]];
     } else {
       return [];
     }
   }
   searchNotes(word) {
     // Create a new array with the params of search
-    return this.notesElements.filter((note) => {
+    return this._notesElements.filter((note) => {
       // Create a regEx global
       const regex = new RegExp(word, "gi");
       // Search the params in name and note
@@ -53,7 +49,7 @@ class Notes {
     });
   }
   sortNotes(type) {
-    const result = Array.from(this.notesElements);
+    const result = Array.from(this._notesElements);
     switch (type) {
       case "asc":
         return result.sort((a, b) => {
@@ -76,20 +72,20 @@ class Notes {
         });
 
       default:
-        return this.notesElements;
+        return this._notesElements;
     }
   }
   removeNote(id) {
     // delete select note-id and make a new array
-    this.notesElements = this.notesElements.filter((n) => n.id !== id);
+    this._notesElements = this._notesElements.filter((n) => n.id !== id);
     // set to localStorage the new array
-    localStorage.setItem("notes", JSON.stringify(this.notesElements));
+    localStorage.setItem("notes", JSON.stringify(this._notesElements));
   }
   editNote(edited) {
-    this.notesElements = this.notesElements.map((n) =>
+    this._notesElements = this._notesElements.map((n) =>
       n.id === edited.id ? edited : n
     );
-    localStorage.setItem("notes", JSON.stringify(this.notesElements));
+    localStorage.setItem("notes", JSON.stringify(this._notesElements));
   }
 }
 
