@@ -190,6 +190,9 @@ function addCategory() {
     return;
   }
   categories.setCategories(newCategory);
+  const formCategory = document.getElementById("form-category");
+  formCategory.reset();
+  document.getElementById("category-container").remove();
 }
 export {
   setState,
