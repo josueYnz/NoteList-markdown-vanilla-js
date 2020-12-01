@@ -3,7 +3,7 @@ import { arrayData } from "../functions/helpers.js";
 class Notes {
   _notesElements = JSON.parse(localStorage.getItem("notes")) || [];
 
-  addNote({ name, note, date, id, category = "Uncategory" }) {
+  addNote({ name, note, date, id, category }) {
     // markdow to html
     const convertToHTML = marked(note);
     // purify the new html
@@ -33,7 +33,9 @@ class Notes {
   getRandomNote() {
     const arrHaveData = arrayData(this._notesElements);
     if (arrHaveData) {
-      const randomPoint = Math.floor(Math.random() * this._notesElements.length);
+      const randomPoint = Math.floor(
+        Math.random() * this._notesElements.length
+      );
       return [this._notesElements[randomPoint]];
     } else {
       return [];
@@ -75,6 +77,13 @@ class Notes {
         return this._notesElements;
     }
   }
+  filterByCategory(category) {
+    if (category === "") {
+      return this._notesElements;
+    }
+    const arrCt = this._notesElements.filter((n) => n.category === category);
+    return arrCt;
+  }
   removeNote(id) {
     // delete select note-id and make a new array
     this._notesElements = this._notesElements.filter((n) => n.id !== id);
@@ -88,5 +97,4 @@ class Notes {
     localStorage.setItem("notes", JSON.stringify(this._notesElements));
   }
 }
-
 export default Notes;

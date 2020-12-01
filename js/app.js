@@ -10,6 +10,8 @@ import { categoryForm } from "./domElements/formCategories.js";
  convertir todo esto en classes
 
 ############################*/
+const select = document.getElementById("select-category");
+event.selectCategory(select);
 (() => {
   const notes = new Notes();
   const ui = new UI();
@@ -37,15 +39,22 @@ import { categoryForm } from "./domElements/formCategories.js";
   // Inputs
   const nameInput = document.getElementById("name");
   const noteInput = document.getElementById("editor");
+  const categorySelect = document.getElementById("select-category");
+
 
   // fill data in realtime
   nameInput.addEventListener("input", action.setState);
   noteInput.addEventListener("input", action.setState);
+  categorySelect.addEventListener("change", action.setState);
 
   // Select the form
   const form = document.getElementById("create-note");
   // Submit data and create a note
   form.addEventListener("submit", action.addNote);
+
+  const filterSelect = document.getElementById("filter-category");
+  event.selectCategory(filterSelect);
+  filterSelect.addEventListener("change", action.filterCategoryAct)
 
   // show a random note
   event.randomContent();

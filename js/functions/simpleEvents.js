@@ -1,10 +1,13 @@
-import { cleanDom } from "./helpers.js";
+import { cleanDom, dataIterator, arrayData } from "./helpers.js";
 import Notes from "../Classes/Notes.js";
 import UI from "../Classes/UI.js";
+import Categories from "../Classes/Categories.js";
 
 const notes = new Notes();
 
 const ui = new UI();
+
+const categories = new Categories();
 
 function showMenu(e) {
   e.preventDefault();
@@ -18,6 +21,22 @@ function closeMenu(e) {
 
   responsiveContent.classList.add("responsive-content");
 }
+
+function selectCategory(select) {
+  const categoriesArr = categories.getCategories();
+  const validateArr = arrayData(categoriesArr);
+
+  if (validateArr) {
+    dataIterator(categoriesArr, (category) => {
+      const option = document.createElement("option");
+      option.value = category;
+      option.text = category;
+      select.appendChild(option);
+    });
+    return;
+  }
+}
+
 function randomContent() {
   cleanDom(document.getElementById("random-content"));
   // random notes
@@ -27,8 +46,4 @@ function randomContent() {
 
   ui.printNotes(notes.getRandomNote(), randomNotes);
 }
-export {
-  showMenu,
-  closeMenu,
-  randomContent
-};
+export { showMenu, closeMenu, selectCategory, randomContent };

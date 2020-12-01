@@ -34,15 +34,23 @@
           <input class="control" name="search-input" type="text" id="search-input"
             placeholder="Insert here a search keyword" />
         </div>
-        <div class="form-group flex-column">
-          <label class="question" for="notes-sort">Sort by</label>
-          <select name="notes-sort" id="notes-sort">
-            <option value="">-- Select one option --</option>
-            <option value="asc">Asc</option>
-            <option value="desc">Desc</option>
-            <option value="recent">Most recent</option>
-            <option value="last">Last</option>
-          </select>
+        <div class="grid-container gap-2">
+          <div class="form-group flex-column">
+            <label class="question" for="notes-sort">Sort by</label>
+            <select name="notes-sort" id="notes-sort">
+              <option value="">-- Select one option --</option>
+              <option value="asc">Asc</option>
+              <option value="desc">Desc</option>
+              <option value="recent">recent</option>
+              <option value="last">Last</option>
+            </select>
+          </div>
+          <div class="form-group flex-column">
+            <label class="question" for="filter-category">Filter by category</label>
+            <select name="category" id="filter-category">
+              <option value="">-- Select one option --</option>
+            </select>
+          </div>
         </div>
       </form>
       <div id="random-content">
@@ -68,6 +76,12 @@
             <div class="form-group flex-column">
               <label class="question" for="name">Nombre de la nota:</label>
               <input class="control" name="name" type="text" id="name" />
+            </div>
+            <div class="form-group flex-column">
+              <label class="question" for="select-category">Selecciona una categoría:</label>
+              <select name="category" id="select-category">
+                <option value="">--- Seleccione una categoría ---</option>
+              </select>
             </div>
             <div class="form-group flex-column">
               <p class="question">Contenido:</p>

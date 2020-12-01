@@ -36,7 +36,7 @@ class UI {
 
     if (arrData) {
       Helper.dataIterator(notes, (noteU) => {
-        const { name, note, markdown, author, date, id } = noteU;
+        const { name, note, markdown, author, date, id, category } = noteU;
 
         const card = document.createElement("div");
         card.classList.add("card");
@@ -109,12 +109,11 @@ class UI {
         btnViewNote.onclick = (e) => {
           this.openNote({ name, date, note });
         };
-        // const divCategories = document.createElement("div");
-        // divCategories.classList.add(
-        //   "flex-row",
-        //   "justify-end",
-        //   "items-center"
-        // );
+        const divCategories = document.createElement("div");
+        divCategories.classList.add("flex-row", "justify-end", "items-center");
+        divCategories.innerHTML = `
+          <p class="categorie">${category}</p>
+        `;
 
         // <a class="categorie" href="#">Programing</a>
 
@@ -126,6 +125,7 @@ class UI {
 
         cardBody.appendChild(nameTitle);
         cardBody.appendChild(createDate);
+        cardBody.appendChild(divCategories);
         cardBody.appendChild(btnViewNote);
 
         container.appendChild(card);
@@ -194,6 +194,5 @@ class UI {
 
     document.querySelector("main").appendChild(modalDiv);
   }
-  
 }
 export default UI;

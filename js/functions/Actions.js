@@ -1,18 +1,19 @@
 import Notes from "../Classes/Notes.js";
 import UI from "../Classes/UI.js";
 import Categories from "../Classes/Categories.js";
+import { selectCategory } from "./simpleEvents.js";
 
 const ui = new UI();
 const notes = new Notes();
 
 const categories = new Categories();
 
-let state = { name: "", content: "" };
+let state = { name: "", content: "", category: "" };
 let editMode;
 const notesContainer = document.getElementById("notes");
 
 function restoreState() {
-  Object.assign(state, { name: "", content: "" });
+  Object.assign(state, { name: "", content: "", category: "" });
   const nameInput = document.getElementById("name");
   const noteInput = document.getElementById("editor");
 
@@ -87,6 +88,7 @@ function addNote(e) {
       author: "User",
       date: `${dayNumb}-${month}-${year} ${hour}:${minutes} Edited`,
       id: parseInt(id.value),
+      category: state.category
     });
     document.getElementById("form-title").textContent = "Crear nota";
     document.getElementById("submit").textContent = "Crear nota";
@@ -107,6 +109,7 @@ function addNote(e) {
       author: "User",
       date: `${dayNumb}-${month}-${year} ${hour}:${minutes}`,
       id: Date.now(),
+      category: state.category
     };
     notes.addNote(userNote);
   }
@@ -155,8 +158,24 @@ function loadEdition({ name, markdown, id }) {
 function order(e) {
   e.preventDefault();
   const order = document.getElementById("notes-sort").value;
-
+  if (order !== "") {
+    if (document.getElementById("random-notes")) {
+      document.getElementById("random-notes").remove();
+    }
+  }
   ui.printNotes(notes.sortNotes(order), notesContainer);
+}
+function filterCategoryAct() {
+  
+  const selectValue = document.getElementById("filter-category").value;
+  const arrNotes = notes.filterByCategory(selectValue);
+  ui.printNotes(arrNotes, notesContainer);
+  if (selectValue !== "") {
+    if (document.getElementById("random-notes")) {
+      document.getElementById("random-notes").remove();
+    }
+  }
+  
 }
 function deleteNote(id) {
   const confirmAction = confirm("¿Estas seguro?");
@@ -193,6 +212,7 @@ function addCategory() {
   const formCategory = document.getElementById("form-category");
   formCategory.reset();
   document.getElementById("category-container").remove();
+  window.location.reload();
 }
 export {
   setState,
@@ -202,5 +222,6 @@ export {
   loadEdition,
   deleteNote,
   order,
+  filterCategoryAct,
   addCategory
 };

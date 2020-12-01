@@ -521,12 +521,13 @@ input[type="checkbox"] {
 }
 
 .categorie {
-  padding: 0.6rem 0.9rem;
-  margin: 0.5rem 0.6rem;
+  padding: 0.3rem 0.9rem;
+  margin: 0.6rem;
   background-color: var(--gray);
   border-radius: 40px;
   box-shadow: var(--shadow-small);
   transition: 100ms ease-in-out;
+  cursor: pointer;
 }
 .categorie:hover {
   background-color: var(--light-gray);
