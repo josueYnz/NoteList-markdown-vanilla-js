@@ -2,6 +2,7 @@ import Notes from "./Classes/Notes.js";
 import * as action from "./functions/Actions.js";
 import UI from "./Classes/UI.js";
 import * as event from "./functions/simpleEvents.js";
+import { categoryForm } from "./domElements/formCategories.js";
 
 // main function
 /*##########################
@@ -20,6 +21,9 @@ import * as event from "./functions/simpleEvents.js";
     e.preventDefault();
     requestAnimationFrame(action.closeModal);
   });
+  // category modal
+  const createCategoryModal = document.getElementById("create-category-modal");
+  createCategoryModal.addEventListener("click", categoryForm);
   // Main notes container.
   const notesContainer = document.getElementById("notes");
 

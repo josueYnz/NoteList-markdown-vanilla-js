@@ -1,10 +1,11 @@
 import { arrayData } from "../functions/helpers.js";
 // notes controller
 class Notes {
-  constructor() {
+  constructor(categories = "") {
     // tomar un enfoque más reactivo.
     // if exist notes in localStorage
     this.notesElements = JSON.parse(localStorage.getItem("notes")) || [];
+    this.categories = categories;
   }
 
   addNote({ name, note, date, id }) {
@@ -44,11 +45,11 @@ class Notes {
   }
   searchNotes(word) {
     // Create a new array with the params of search
-    return this.notesElements.filter((element) => {
+    return this.notesElements.filter((note) => {
       // Create a regEx global
       const regex = new RegExp(word, "gi");
       // Search the params in name and note
-      return element.name.match(regex) || element.note.match(regex);
+      return note.name.match(regex) || note.note.match(regex);
     });
   }
   sortNotes(type) {
@@ -80,13 +81,13 @@ class Notes {
   }
   removeNote(id) {
     // delete select note-id and make a new array
-    this.notesElements = this.notesElements.filter((note) => note.id !== id);
+    this.notesElements = this.notesElements.filter((n) => n.id !== id);
     // set to localStorage the new array
     localStorage.setItem("notes", JSON.stringify(this.notesElements));
   }
-  editNote(editedNote) {
-    this.notesElements = this.notesElements.map((note) =>
-      note.id === editedNote.id ? editedNote : note
+  editNote(edited) {
+    this.notesElements = this.notesElements.map((n) =>
+      n.id === edited.id ? edited : n
     );
     localStorage.setItem("notes", JSON.stringify(this.notesElements));
   }

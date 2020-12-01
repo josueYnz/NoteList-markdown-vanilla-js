@@ -1,8 +1,11 @@
 import Notes from "../Classes/Notes.js";
 import UI from "../Classes/UI.js";
+import Categories from "../Classes/Categories.js";
 
 const ui = new UI();
 const notes = new Notes();
+
+const categories = new Categories();
 
 let state = { name: "", content: "" };
 let editMode;
@@ -172,6 +175,22 @@ function deleteNote(id) {
     return;
   }
 }
+
+function addCategory() {
+  const newCategory = document.getElementById("new-category").value;
+  if (newCategory === "") {
+
+    ui.alertMsg({
+      msg: "Debes llenar todos los campos",
+      container: document.getElementById("card-category"),
+      beforeElm: document.getElementById("form-category"),
+      type: "error",
+      aditionalClass: ["block"],
+    });
+    return;
+  }
+  categories.setCategories(newCategory);
+}
 export {
   setState,
   showModal,
@@ -180,4 +199,5 @@ export {
   loadEdition,
   deleteNote,
   order,
+  addCategory
 };

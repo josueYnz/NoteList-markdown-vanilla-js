@@ -194,5 +194,6 @@ class UI {
 
     document.querySelector("main").appendChild(modalDiv);
   }
+  
 }
 export default UI;
