@@ -36,10 +36,9 @@ class Notes {
   getRandomNote() {
     const arrHaveData = arrayData(this._notesElements);
     if (arrHaveData) {
-      const randomPoint = Math.floor(
-        Math.random() * this._notesElements.length
-      );
-      return [this._notesElements[randomPoint]];
+      const randomNumber = Math.random() * this._notesElements.length;
+      const numberRounded = Math.floor(randomNumber);
+      return [this._notesElements[numberRounded]];
     } else {
       return [];
     }
