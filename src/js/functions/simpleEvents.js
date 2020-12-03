@@ -12,13 +12,18 @@ const categories = new Categories();
 function showMenu(e) {
   e.preventDefault();
   const responsiveContent = document.getElementById("resp-content");
+  const btnShow = document.getElementById("show");
 
+  btnShow.classList.add("hidden");
   responsiveContent.classList.remove("responsive-content");
 }
 function closeMenu(e) {
   e.preventDefault();
   const responsiveContent = document.getElementById("resp-content");
 
+  const btnShow = document.getElementById("show");
+  btnShow.classList.remove("hidden");
+  
   responsiveContent.classList.add("responsive-content");
 }
 
