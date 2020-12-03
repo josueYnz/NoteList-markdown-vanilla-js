@@ -190,7 +190,7 @@ img,
   font-size: larger;
 }
 .show-menu {
-  display: none;
+  display: none !important;
 }
 .close-menu {
   display: none !important;
@@ -211,7 +211,7 @@ img,
     display: none !important;
   }
   .show-menu {
-    display: block;
+    display: flex;
   }
   .close-menu {
     display: flex !important;
