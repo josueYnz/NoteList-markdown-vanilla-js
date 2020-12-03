@@ -13,7 +13,7 @@ class Notes {
     const purifyHTML = DOMPurify.sanitize(convertToHTML);
 
     const upperCaseLetter = name.charAt(0).toUpperCase();
-    const formated = upperCaseLetter + name.slice(1, name.length) + ".";
+    const formated = upperCaseLetter + name.slice(1, name.length);
     const newName = formated.trim();
 
     const userNote = {
@@ -26,7 +26,7 @@ class Notes {
     };
 
     // add objects in notesElements
-    this._notesElements = [...this._notesElements, userNote];
+    this._notesElements = [userNote, ...this._notesElements];
     // notesElements to localStorage
     localStorage.setItem("notes", JSON.stringify(this._notesElements));
   }
