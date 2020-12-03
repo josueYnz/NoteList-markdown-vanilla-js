@@ -1,7 +1,7 @@
 import "./css/custom.css";
-import {Notes} from "./js/Classes/Notes";
+import Notes from "./js/Classes/Notes";
 import * as action from "./js/functions/Actions";
-import {UI} from "./js/Classes/UI";
+import UI from "./js/Classes/UI";
 import * as event from "./js/functions/simpleEvents";
 import { categoryForm } from "./js/domElements/formCategories";
 
