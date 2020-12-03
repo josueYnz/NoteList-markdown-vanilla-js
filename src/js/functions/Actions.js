@@ -1,6 +1,6 @@
-import { Notes } from "../Classes/Notes";
-import { UI } from "../Classes/UI";
-import { Categories } from "../Classes/Categories";
+import Notes from "../Classes/Notes";
+import UI from "../Classes/UI";
+import Categories from "../Classes/Categories";
 
 const ui = new UI();
 const notes = new Notes();

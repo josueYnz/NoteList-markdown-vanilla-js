@@ -106,4 +106,4 @@ class Notes {
     localStorage.setItem("notes", JSON.stringify(this._notesElements));
   }
 }
-export {Notes};
+export default Notes;
