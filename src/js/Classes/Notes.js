@@ -1,4 +1,4 @@
-import { arrayData } from "../functions/helpers.js";
+import { arrayData } from "../functions/helpers";
 // notes controller
 class Notes {
   _notesElements = JSON.parse(localStorage.getItem("notes")) || [];
@@ -97,4 +97,4 @@ class Notes {
     localStorage.setItem("notes", JSON.stringify(this._notesElements));
   }
 }
-export default Notes;
+export {Notes};

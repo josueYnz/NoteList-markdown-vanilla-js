@@ -1,7 +1,6 @@
-import Notes from "../Classes/Notes.js";
-import UI from "../Classes/UI.js";
-import Categories from "../Classes/Categories.js";
-import { selectCategory } from "./simpleEvents.js";
+import { Notes } from "../Classes/Notes";
+import { UI } from "../Classes/UI";
+import { Categories } from "../Classes/Categories";
 
 const ui = new UI();
 const notes = new Notes();

@@ -1,5 +1,5 @@
 
-import { addCategory } from "../functions/Actions.js";
+import { addCategory } from "../functions/Actions";
 export function categoryForm(e) {
   e.preventDefault();
     const modalDiv = document.createElement("div");

@@ -20,4 +20,4 @@ class Categories {
     localStorage.setItem("categories", JSON.stringify(this._categories));
   }
 }
-export default Categories;
+export { Categories };

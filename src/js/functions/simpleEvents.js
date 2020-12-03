@@ -1,7 +1,7 @@
-import { cleanDom, dataIterator, arrayData } from "./helpers.js";
-import Notes from "../Classes/Notes.js";
-import UI from "../Classes/UI.js";
-import Categories from "../Classes/Categories.js";
+import { cleanDom, dataIterator, arrayData } from "./helpers";
+import { Notes } from "../Classes/Notes";
+import { UI } from "../Classes/UI";
+import { Categories } from "../Classes/Categories";
 
 const notes = new Notes();
 

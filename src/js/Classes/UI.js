@@ -1,5 +1,5 @@
-import * as Helper from "../functions/helpers.js";
-import * as action from "../functions/Actions.js";
+import * as Helper from "../functions/helpers";
+import * as action from "../functions/Actions";
 
 class UI {
   alertMsg({
@@ -195,4 +195,4 @@ class UI {
     document.querySelector("main").appendChild(modalDiv);
   }
 }
-export default UI;
+export {UI};

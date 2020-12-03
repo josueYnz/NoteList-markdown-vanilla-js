@@ -1,8 +1,9 @@
-import Notes from "./Classes/Notes.js";
-import * as action from "./functions/Actions.js";
-import UI from "./Classes/UI.js";
-import * as event from "./functions/simpleEvents.js";
-import { categoryForm } from "./domElements/formCategories.js";
+import "./css/custom.css";
+import {Notes} from "./js/Classes/Notes";
+import * as action from "./js/functions/Actions";
+import {UI} from "./js/Classes/UI";
+import * as event from "./js/functions/simpleEvents";
+import { categoryForm } from "./js/domElements/formCategories";
 
 // main function
 /*##########################
