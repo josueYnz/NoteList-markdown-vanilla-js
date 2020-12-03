@@ -1,4 +1,7 @@
 import { arrayData } from "../functions/helpers";
+import marked from "marked";
+import DOMPurify from "dompurify";
+
 // notes controller
 class Notes {
   _notesElements = JSON.parse(localStorage.getItem("notes")) || [];
@@ -91,9 +94,15 @@ class Notes {
     localStorage.setItem("notes", JSON.stringify(this._notesElements));
   }
   editNote(edited) {
-    this._notesElements = this._notesElements.map((n) =>
-      n.id === edited.id ? edited : n
-    );
+    this._notesElements = this._notesElements.map((n) =>{
+      if(n.id === edited.id) {
+        const html = DOMPurify.sanitize(marked(edited.markdown));
+        edited.note = html;
+        return edited;
+      } else {
+        return n;
+      }
+    } );
     localStorage.setItem("notes", JSON.stringify(this._notesElements));
   }
 }

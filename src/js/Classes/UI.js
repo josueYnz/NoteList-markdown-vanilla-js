@@ -5,7 +5,7 @@ class UI {
   alertMsg({
     msg,
     container,
-    beforeElm,
+    beforeElm = "",
     type = "error",
     aditionalClass: [...extraClass] = "",
   }) {
@@ -22,7 +22,11 @@ class UI {
         divMsg.classList.add("bg-danger");
       }
       divMsg.textContent = msg;
-      container.insertBefore(divMsg, beforeElm);
+      if(beforeElm === "") {
+        container.appendChild(divMsg);
+      } else {
+        container.insertBefore(divMsg, beforeElm);
+      }
       setTimeout(() => {
         divMsg.remove();
       }, 2000);
@@ -135,7 +139,7 @@ class UI {
 
     const message = document.createElement("p");
     message.classList.add("text-center", "font-large-x");
-    message.textContent = "No hay elementos disponibles";
+    message.textContent = "There are no notes available, try creating one.";
 
     container.appendChild(message);
   }

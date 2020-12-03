@@ -6,11 +6,7 @@ import * as event from "./js/functions/simpleEvents";
 import { categoryForm } from "./js/domElements/formCategories";
 
 // main function
-/*##########################
 
- convertir todo esto en classes
-
-############################*/
 const select = document.getElementById("select-category");
 event.selectCategory(select);
 (() => {
@@ -69,8 +65,11 @@ event.selectCategory(select);
 
   // select the search input
   const searchInput = document.getElementById("search-input");
-  // When the user entry elements to input
+  // When the user input
   searchInput.addEventListener("input", (e) => {
+
+    const randomNotesContainer = document.getElementById("random-notes");
+
     const searchParam = e.target.value;
     // search the param and return a new array
     const searchResult = notes.searchNotes(searchParam);
@@ -78,13 +77,13 @@ event.selectCategory(select);
     ui.printNotes(searchResult, notesContainer);
 
     if (searchParam === "") {
-      if (!document.getElementById("random-notes")) {
+      if (!randomNotesContainer) {
         event.randomContent();
         return;
       }
     } else {
-      if (document.getElementById("random-notes")) {
-        document.getElementById("random-notes").remove();
+      if (randomNotesContainer) {
+        randomNotesContainer.remove();
         return;
       }
     }

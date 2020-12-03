@@ -57,13 +57,12 @@ function addNote(e) {
   const main = document.querySelector("main");
 
   const form = document.getElementById("create-note");
-  const modalBody = document.getElementById("modal-body");
+  const btnContainer = document.getElementById("btn-container");
   if (validateInput) {
     // create alert element
     ui.alertMsg({
-      msg: "Debes llenar todos los campos",
-      container: modalBody,
-      beforeElm: form,
+      msg: "You must fill all the fields",
+      container: btnContainer,
       type: "error",
       aditionalClass: ["block"],
     });
@@ -72,31 +71,30 @@ function addNote(e) {
   if (editMode) {
     // create alert element
     ui.alertMsg({
-      msg: "Elemento editado exitosamente...",
+      msg: "Item edited successfully...",
       container: document.body,
       beforeElm: main,
       type: "success",
       aditionalClass: ["block"],
     });
     const id = document.getElementById("id-input");
-    const noteTransformed = DOMPurify.sanitize(marked(state.content));
+    
     notes.editNote({
       name: state.name,
-      note: noteTransformed,
       markdown: state.content,
       author: "User",
       date: `${dayNumb}-${month}-${year} ${hour}:${minutes} Edited`,
       id: parseInt(id.value),
-      category: state.category
+      category: state.category,
     });
-    document.getElementById("form-title").textContent = "Crear nota";
-    document.getElementById("submit").textContent = "Crear nota";
+    document.getElementById("form-title").textContent = "Create note";
+    document.getElementById("submit").textContent = "Create note";
     document.getElementById("id-label").remove();
     id.remove();
     editMode = false;
   } else {
     ui.alertMsg({
-      msg: "Elemento creado exitosamente...",
+      msg: "Successfully created item...",
       container: document.body,
       beforeElm: main,
       type: "success",
@@ -108,14 +106,14 @@ function addNote(e) {
       author: "User",
       date: `${dayNumb}-${month}-${year} ${hour}:${minutes}`,
       id: Date.now(),
-      category: state.category
+      category: state.category,
     };
     notes.addNote(userNote);
   }
 
   restoreState();
   form.reset();
-  requestAnimationFrame(closeModal);
+  closeModal();
   const getNotes = notes.getNotes();
   ui.printNotes(getNotes, notesContainer);
 }
@@ -142,7 +140,7 @@ function loadEdition({ name, markdown, id }) {
 
   content.appendChild(idLabel);
   content.appendChild(idInput);
-  requestAnimationFrame(showModal);
+  showModal();
   const nameInput = document.getElementById("name");
   const noteInput = document.getElementById("editor");
 
@@ -157,24 +155,23 @@ function loadEdition({ name, markdown, id }) {
 function order(e) {
   e.preventDefault();
   const order = document.getElementById("notes-sort").value;
-  if (order !== "") {
-    if (document.getElementById("random-notes")) {
-      document.getElementById("random-notes").remove();
-    }
+  const randomNotesContainer = document.getElementById("random-notes");
+  if (order !== "" && randomNotesContainer) {
+    randomNotesContainer.remove();
   }
   ui.printNotes(notes.sortNotes(order), notesContainer);
 }
+
 function filterCategoryAct() {
-  
   const selectValue = document.getElementById("filter-category").value;
   const arrNotes = notes.filterByCategory(selectValue);
+  const randomNotesContainer = document.getElementById("random-notes");
+
   ui.printNotes(arrNotes, notesContainer);
-  if (selectValue !== "") {
-    if (document.getElementById("random-notes")) {
-      document.getElementById("random-notes").remove();
-    }
+
+  if (selectValue !== "" && randomNotesContainer) {
+    randomNotesContainer.remove();
   }
-  
 }
 function deleteNote(id) {
   const confirmAction = confirm("¿Estas seguro?");
@@ -183,7 +180,7 @@ function deleteNote(id) {
     const main = document.querySelector("main");
 
     ui.alertMsg({
-      msg: "Borrado...",
+      msg: "Deleted...",
       container: document.body,
       beforeElm: main,
       type: "success",
@@ -197,9 +194,8 @@ function deleteNote(id) {
 function addCategory() {
   const newCategory = document.getElementById("new-category").value;
   if (newCategory === "") {
-
     ui.alertMsg({
-      msg: "Debes llenar todos los campos",
+      msg: "You must fill all the fields",
       container: document.getElementById("card-category"),
       beforeElm: document.getElementById("form-category"),
       type: "error",
@@ -222,5 +218,5 @@ export {
   deleteNote,
   order,
   filterCategoryAct,
-  addCategory
+  addCategory,
 };
