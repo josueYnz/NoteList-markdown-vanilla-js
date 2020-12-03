@@ -211,7 +211,7 @@ img,
     display: none !important;
   }
   .show-menu {
-    display: flex;
+    display: flex !important;
   }
   .close-menu {
     display: flex !important;
