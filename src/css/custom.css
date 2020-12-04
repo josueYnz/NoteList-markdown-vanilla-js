@@ -356,12 +356,11 @@ img,
 
 .card {
   margin: 0.7rem;
-  
   box-shadow: var(--shadow-small);
   border-radius: var(--rounded-sm);
 }
 .card-body {
-  padding: 1rem 1.4rem;
+  padding: 1.4rem;
   text-align: justify;
 }
 
