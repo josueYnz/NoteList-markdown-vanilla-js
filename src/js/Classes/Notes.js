@@ -65,12 +65,12 @@ class Notes {
           return b.name[0].localeCompare(a.name[0]);
         });
 
-      case "recent":
+      case "old":
         return result.sort((a, b) => {
           return a.id - b.id;
         });
 
-      case "last":
+      case "recent":
         return result.sort((a, b) => {
           return b.id - a.id;
         });
