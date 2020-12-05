@@ -355,11 +355,11 @@ img,
 }
 
 .card {
-  margin: 0.7rem;
   box-shadow: var(--shadow-small);
   border-radius: var(--rounded-sm);
 }
 .card-body {
+  max-width: 100%;
   padding: 1.4rem;
   text-align: justify;
 }
@@ -534,6 +534,7 @@ input[type="checkbox"] {
   box-shadow: var(--shadow-medium);
 }
 .modal {
+  max-width: 100%;
   position: fixed;
   top: 0;
   left: 0;
