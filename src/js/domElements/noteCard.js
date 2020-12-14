@@ -1,7 +1,7 @@
 import * as action from "../functions/Actions";
 import modalNote from "../domElements/modalNote";
 
-export function noteCard(note) {
+export function noteCard(note, container) {
     const { name, note, markdown, author, date, id, category } = note;
 
     const card = document.createElement("div");

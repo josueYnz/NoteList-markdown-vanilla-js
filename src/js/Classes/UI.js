@@ -41,7 +41,7 @@ class UI {
 
     if (arrData) {
       Helper.dataIterator(arr, (data) => {
-        callback(data);
+        callback(data, container);
       });
       return;
     }
