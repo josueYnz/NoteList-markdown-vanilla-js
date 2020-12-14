@@ -16,7 +16,7 @@ const deleteButton = document.getElementById("delete-button");
 formNote.addEventListener("click", action.showModal);
 deleteButton.addEventListener("click", (e) => {
   e.preventDefault();
-  requestAnimationFrame(action.closeModal);
+  action.closeModal();
 });
 // category modal
 const createCategoryModal = document.getElementById("create-category-modal");
