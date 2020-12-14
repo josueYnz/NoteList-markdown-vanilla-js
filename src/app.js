@@ -4,8 +4,7 @@ import * as action from "./js/functions/Actions";
 import UI from "./js/Classes/UI";
 import * as event from "./js/functions/simpleEvents";
 import { categoryForm } from "./js/domElements/formCategories";
-
-// main function
+import { noteCard } from "./js/domElements/noteCard";
 
 const select = document.getElementById("select-category");
 event.selectCategory(select);
@@ -55,7 +54,7 @@ filterSelect.addEventListener("change", action.filterCategoryAct);
 event.randomContent();
 
 // print notes when the window browser load
-ui.printNotes(notes.getNotes(), notesContainer);
+ui.printNotes(notesContainer, notes.getNotes(), noteCard);
 
 const orderNotes = document.getElementById("notes-sort");
 orderNotes.addEventListener("change", action.order);
@@ -70,7 +69,7 @@ searchInput.addEventListener("input", (e) => {
   // search the param and return a new array
   const searchResult = notes.searchNotes(searchParam);
   // Print the new array
-  ui.printNotes(searchResult, notesContainer);
+  ui.printNotes(notesContainer, searchResult, noteCard);
 
   if (searchParam === "") {
     if (!randomNotesContainer) {
