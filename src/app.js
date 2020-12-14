@@ -5,7 +5,6 @@ import UI from "./js/Classes/UI";
 import * as event from "./js/functions/simpleEvents";
 import { categoryForm } from "./js/domElements/formCategories";
 
-// main function
 
 const select = document.getElementById("select-category");
 event.selectCategory(select);
