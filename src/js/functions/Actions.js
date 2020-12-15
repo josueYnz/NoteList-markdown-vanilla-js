@@ -1,6 +1,7 @@
 import Notes from "../Classes/Notes";
 import UI from "../Classes/UI";
 import Categories from "../Classes/Categories";
+import { noteCard } from "../domElements/noteCard";
 
 const ui = new UI();
 const notes = new Notes();
@@ -115,7 +116,7 @@ function addNote(e) {
   form.reset();
   closeModal();
   const getNotes = notes.getNotes();
-  ui.printNotes(getNotes, notesContainer);
+  ui.printNotes(notesContainer, getNotes, noteCard);
 }
 function loadEdition({ name, markdown, id }) {
   const form = document.getElementById("create-note");
@@ -159,15 +160,16 @@ function order(e) {
   if (order !== "" && randomNotesContainer) {
     randomNotesContainer.remove();
   }
-  ui.printNotes(notes.sortNotes(order), notesContainer);
+  const sortedNotes = notes.sortNotes(order);
+  ui.printNotes(notesContainer, sortedNotes, noteCard);
 }
 
 function filterCategoryAct() {
   const selectValue = document.getElementById("filter-category").value;
-  const arrNotes = notes.filterByCategory(selectValue);
   const randomNotesContainer = document.getElementById("random-notes");
+  const arrNotes = notes.filterByCategory(selectValue);
 
-  ui.printNotes(arrNotes, notesContainer);
+  ui.printNotes(notesContainer, arrNotes, noteCard);
 
   if (selectValue !== "" && randomNotesContainer) {
     randomNotesContainer.remove();
@@ -186,7 +188,8 @@ function deleteNote(id) {
       type: "success",
       aditionalClass: ["block"],
     });
-    ui.printNotes(notes.getNotes(), notesContainer);
+    ui.printNotes(notesContainer, notes.getNotes(), noteCard);
+    
     return;
   }
 }
