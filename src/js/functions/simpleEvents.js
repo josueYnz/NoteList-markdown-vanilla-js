@@ -2,6 +2,7 @@ import { cleanDom, dataIterator, arrayData } from "./helpers";
 import Notes from "../Classes/Notes";
 import UI from "../Classes/UI";
 import Categories from "../Classes/Categories";
+import { noteCard } from "../domElements/noteCard";
 
 const notes = new Notes();
 
@@ -49,6 +50,6 @@ function randomContent() {
   randomNotes.id = "random-notes";
   document.getElementById("random-content").appendChild(randomNotes);
 
-  ui.printNotes(notes.getRandomNote(), randomNotes);
+  ui.printNotes(randomNotes, notes.getRandomNote(), noteCard);
 }
 export { showMenu, closeMenu, selectCategory, randomContent };

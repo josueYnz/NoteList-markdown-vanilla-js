@@ -1,6 +1,5 @@
 import * as Helper from "../functions/helpers";
-import * as action from "../functions/Actions";
-import modalNote from "../domElements/modalNote";
+import { notAvailable } from "../domElements/notAvailable";
 
 class UI {
   alertMsg({
@@ -40,17 +39,11 @@ class UI {
     const arrData = Helper.arrayData(arr);
 
     if (arrData) {
-      Helper.dataIterator(arr, (data) => {
-        callback(data, container);
-      });
+      Helper.dataIterator(arr, (data) => callback(data, container));
       return;
     }
 
-    const message = document.createElement("p");
-    message.classList.add("text-center", "font-large-x");
-    message.textContent = "There are no notes available, try creating one.";
-
-    container.appendChild(message);
+    notAvailable(container)
   }
 }
 export default UI;
