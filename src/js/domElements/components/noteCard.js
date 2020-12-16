@@ -1,5 +1,5 @@
-import * as action from "../functions/Actions";
-import modalNote from "../domElements/modalNote";
+import * as action from "../../functions/Actions";
+import modalNote from "./modalNote";
 
 export function noteCard(noteObj, container) {
   const { name, note, markdown, author, date, id, category } = noteObj;

@@ -2,7 +2,7 @@ import { cleanDom, dataIterator, arrayData } from "./helpers";
 import Notes from "../Classes/Notes";
 import UI from "../Classes/UI";
 import Categories from "../Classes/Categories";
-import { noteCard } from "../domElements/noteCard";
+import { noteCard } from "../domElements/components/noteCard";
 
 const notes = new Notes();
 

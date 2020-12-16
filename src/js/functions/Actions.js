@@ -1,7 +1,7 @@
 import Notes from "../Classes/Notes";
 import UI from "../Classes/UI";
 import Categories from "../Classes/Categories";
-import { noteCard } from "../domElements/noteCard";
+import { noteCard } from "../domElements/components/noteCard";
 
 const ui = new UI();
 const notes = new Notes();

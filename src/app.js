@@ -3,8 +3,8 @@ import Notes from "./js/Classes/Notes";
 import * as action from "./js/functions/Actions";
 import UI from "./js/Classes/UI";
 import * as event from "./js/functions/simpleEvents";
-import { categoryForm } from "./js/domElements/formCategories";
-import { noteCard } from "./js/domElements/noteCard";
+import { categoryForm } from "./js/domElements/components/formCategories";
+import { noteCard } from "./js/domElements/components/noteCard";
 
 const select = document.getElementById("select-category");
 event.selectCategory(select);
