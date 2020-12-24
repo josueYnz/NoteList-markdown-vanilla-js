@@ -2,7 +2,7 @@ import { cleanDom, dataIterator, arrayData } from "./helpers";
 import Notes from "../Classes/Notes";
 import UI from "../Classes/UI";
 import Categories from "../Classes/Categories";
-import { noteCard } from "../domElements/components/noteCard";
+import { noteCard } from "../views/components/subComponents/noteCard";
 
 const notes = new Notes();
 
@@ -33,12 +33,12 @@ function selectCategory(select) {
   const validateArr = arrayData(categoriesArr);
 
   if (validateArr) {
-    dataIterator(categoriesArr, (category) => {
+    for (const category of categoriesArr) {
       const option = document.createElement("option");
       option.value = category;
       option.text = category;
       select.appendChild(option);
-    });
+    }
     return;
   }
 }
@@ -50,6 +50,6 @@ function randomContent() {
   randomNotes.id = "random-notes";
   document.getElementById("random-content").appendChild(randomNotes);
 
-  ui.printNotes(randomNotes, notes.getRandomNote(), noteCard);
+  ui.printNotes(notes.getRandomNote(), noteCard, randomNotes);
 }
 export { showMenu, closeMenu, selectCategory, randomContent };

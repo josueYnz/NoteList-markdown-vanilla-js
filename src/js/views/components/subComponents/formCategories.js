@@ -1,7 +1,5 @@
-
-import { addCategory } from "../../functions/Actions";
-export function categoryForm(e) {
-  e.preventDefault();
+import { addCategory } from "../../../functions/Actions";
+export const categoryForm = () => {
     const modalDiv = document.createElement("div");
     modalDiv.classList.add("modal");
     modalDiv.id = "category-container";

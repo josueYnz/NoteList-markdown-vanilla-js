@@ -1,5 +1,5 @@
 import * as Helper from "../functions/helpers";
-import { notAvailable } from "../domElements/notAvailable";
+import { notAvailable } from "../views/notAvailable";
 
 class UI {
   alertMsg({
@@ -32,18 +32,29 @@ class UI {
       }, 2000);
     }
   }
-  printNotes(container, arr, callback) {
+  printNotes(arr, callback, container = "") {
     // Cleam Dom
-    Helper.cleanDom(container);
+    if (container) {
+      Helper.cleanDom(container);
+    }
 
     const arrData = Helper.arrayData(arr);
 
     if (arrData) {
-      Helper.dataIterator(arr, (data) => callback(data, container));
+      // Helper.dataIterator(arr, (data) => callback(data, container));
+      if(container) {
+        for (const data of arr) {
+          callback(data, container);
+        }
+        return;
+      }
+      for (const data of arr) {
+        return callback(data);
+      }
       return;
     }
 
-    notAvailable(container)
+    notAvailable(container);
   }
 }
 export default UI;
