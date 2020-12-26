@@ -3,10 +3,10 @@ import marked from "marked";
 import DOMPurify from "dompurify";
 
 // notes controller
-class Notes {
-  _notesElements = JSON.parse(localStorage.getItem("notes")) || [];
+const notes = (() => {
+  let _notesElements = JSON.parse(localStorage.getItem("notes")) || [];
 
-  addNote({ name, note, date, id, category }) {
+  function addNote({ name, note, date, id, category }) {
     // markdow to html
     const convertToHTML = marked(note);
     // purify the new html
@@ -26,34 +26,34 @@ class Notes {
     };
 
     // add objects in notesElements
-    this._notesElements = [userNote, ...this._notesElements];
+    _notesElements = [userNote, ..._notesElements];
     // notesElements to localStorage
-    localStorage.setItem("notes", JSON.stringify(this._notesElements));
+    localStorage.setItem("notes", JSON.stringify(_notesElements));
   }
-  getNotes() {
-    return this._notesElements;
+  function getNotes() {
+    return _notesElements;
   }
-  getRandomNote() {
-    const arrHaveData = arrayData(this._notesElements);
+  function getRandomNote() {
+    const arrHaveData = arrayData(_notesElements);
     if (arrHaveData) {
-      const randomNumber = Math.random() * this._notesElements.length;
+      const randomNumber = Math.random() * _notesElements.length;
       const numberRounded = Math.floor(randomNumber);
-      return [this._notesElements[numberRounded]];
+      return [_notesElements[numberRounded]];
     } else {
       return [];
     }
   }
-  searchNotes(word) {
+  function searchNotes(word) {
     // Create a new array with the params of search
-    return this._notesElements.filter((note) => {
+    return _notesElements.filter((note) => {
       // Create a regEx global
       const regex = new RegExp(word, "gi");
       // Search the params in name and note
       return note.name.match(regex) || note.note.match(regex);
     });
   }
-  sortNotes(type) {
-    const result = Array.from(this._notesElements);
+  function sortNotes(type) {
+    const result = Array.from(_notesElements);
     switch (type) {
       case "asc":
         return result.sort((a, b) => {
@@ -76,33 +76,34 @@ class Notes {
         });
 
       default:
-        return this._notesElements;
+        return _notesElements;
     }
   }
-  filterByCategory(category) {
+  function filterByCategory(category) {
     if (category === "") {
-      return this._notesElements;
+      return _notesElements;
     }
-    const arrCt = this._notesElements.filter((n) => n.category === category);
+    const arrCt = _notesElements.filter((n) => n.category === category);
     return arrCt;
   }
-  removeNote(id) {
+  function removeNote(id) {
     // delete select note-id and make a new array
-    this._notesElements = this._notesElements.filter((n) => n.id !== id);
+    _notesElements = _notesElements.filter((n) => n.id !== id);
     // set to localStorage the new array
-    localStorage.setItem("notes", JSON.stringify(this._notesElements));
+    localStorage.setItem("notes", JSON.stringify(_notesElements));
   }
-  editNote(edited) {
-    this._notesElements = this._notesElements.map((n) =>{
-      if(n.id === edited.id) {
+  function editNote(edited) {
+    _notesElements = _notesElements.map((n) => {
+      if (n.id === edited.id) {
         const html = DOMPurify.sanitize(marked(edited.markdown));
         edited.note = html;
         return edited;
       } else {
         return n;
       }
-    } );
-    localStorage.setItem("notes", JSON.stringify(this._notesElements));
+    });
+    localStorage.setItem("notes", JSON.stringify(_notesElements));
   }
-}
-export default Notes;
+  return { addNote, getNotes, getRandomNote, searchNotes, sortNotes, filterByCategory, removeNote, editNote, };
+})();
+export default notes;

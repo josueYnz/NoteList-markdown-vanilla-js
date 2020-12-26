@@ -1,12 +1,10 @@
-import Notes from "../Classes/Notes";
-import UI from "../Classes/UI";
-import Categories from "../Classes/Categories";
-import { noteCard } from "../domElements/noteCard";
-
-const ui = new UI();
-const notes = new Notes();
-
-const categories = new Categories();
+import notes from "../Classes/Notes";
+import ui from "../Classes/UI";
+import categories from "../Classes/Categories";
+import { createNote } from "../views/components/createNoteForm";
+import { noteCard } from "../views/components/subComponents/noteCard";
+import { noteList } from "../views/components/noteList";
+import { selectCategories } from "../views/components/subComponents/selectCategories";
 
 let state = { name: "", content: "", category: "" };
 let editMode;
@@ -14,11 +12,6 @@ const notesContainer = document.getElementById("notes");
 
 function restoreState() {
   Object.assign(state, { name: "", content: "", category: "" });
-  const nameInput = document.getElementById("name");
-  const noteInput = document.getElementById("editor");
-
-  nameInput.value = "";
-  noteInput.value = "";
 }
 function setState(e) {
   state[e.target.name] = e.target.value;
@@ -31,21 +24,17 @@ function showModal() {
   modal.classList.add("block");
 }
 function closeModal() {
-  const modal = document.getElementById("modal");
-
-  modal.classList.remove("block");
-  modal.classList.add("hidden");
+  document.getElementById("create-note-modal").remove();
   if (document.getElementById("id-input")) {
     document.getElementById("id-input").remove();
     document.getElementById("id-label").remove();
   }
   editMode = false;
-  document.getElementById("form-title").textContent = "Crear nota";
-  document.getElementById("submit").textContent = "Crear nota";
+  // document.getElementById("form-title").textContent = "Create note";
+  // document.getElementById("submit").textContent = "Create note";
   restoreState();
 }
-function addNote(e) {
-  e.preventDefault();
+function addNote() {
   // date
   const dayNumb = new Date().getDate();
   const month = new Date().getMonth() + 1;
@@ -73,7 +62,7 @@ function addNote(e) {
     // create alert element
     ui.alertMsg({
       msg: "Item edited successfully...",
-      container: document.body,
+      container: document.getElementById("root"),
       beforeElm: main,
       type: "success",
       aditionalClass: ["block"],
@@ -96,7 +85,7 @@ function addNote(e) {
   } else {
     ui.alertMsg({
       msg: "Successfully created item...",
-      container: document.body,
+      container: document.getElementById("root"),
       beforeElm: main,
       type: "success",
       aditionalClass: ["block"],
@@ -115,10 +104,10 @@ function addNote(e) {
   restoreState();
   form.reset();
   closeModal();
-  const getNotes = notes.getNotes();
-  ui.printNotes(notesContainer, getNotes, noteCard);
+  noteList(notes.getNotes());
 }
 function loadEdition({ name, markdown, id }) {
+  createNote();
   const form = document.getElementById("create-note");
   const content = form.querySelector(".form-group");
 
@@ -141,7 +130,6 @@ function loadEdition({ name, markdown, id }) {
 
   content.appendChild(idLabel);
   content.appendChild(idInput);
-  showModal();
   const nameInput = document.getElementById("name");
   const noteInput = document.getElementById("editor");
 
@@ -161,7 +149,7 @@ function order(e) {
     randomNotesContainer.remove();
   }
   const sortedNotes = notes.sortNotes(order);
-  ui.printNotes(notesContainer, sortedNotes, noteCard);
+  ui.printNotes(sortedNotes, noteCard, notesContainer);
 }
 
 function filterCategoryAct() {
@@ -169,7 +157,7 @@ function filterCategoryAct() {
   const randomNotesContainer = document.getElementById("random-notes");
   const arrNotes = notes.filterByCategory(selectValue);
 
-  ui.printNotes(notesContainer, arrNotes, noteCard);
+  ui.printNotes(arrNotes, noteCard, notesContainer);
 
   if (selectValue !== "" && randomNotesContainer) {
     randomNotesContainer.remove();
@@ -183,12 +171,13 @@ function deleteNote(id) {
 
     ui.alertMsg({
       msg: "Deleted...",
-      container: document.body,
+      container: document.getElementById("root"),
       beforeElm: main,
       type: "success",
       aditionalClass: ["block"],
     });
-    ui.printNotes(notesContainer, notes.getNotes(), noteCard);
+
+    noteList(notes.getNotes());
     
     return;
   }
@@ -210,7 +199,7 @@ function addCategory() {
   const formCategory = document.getElementById("form-category");
   formCategory.reset();
   document.getElementById("category-container").remove();
-  window.location.reload();
+  selectCategories(categories.getCategories());
 }
 export {
   setState,

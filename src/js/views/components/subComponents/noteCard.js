@@ -1,7 +1,7 @@
-import * as action from "../functions/Actions";
-import modalNote from "../domElements/modalNote";
+import { loadEdition, deleteNote } from "../../../functions/Actions";
+import modalNote from "./modalNote";
 
-export function noteCard(noteObj, container) {
+export const noteCard = (noteObj, container = "") => {
   const { name, note, markdown, author, date, id, category } = noteObj;
 
   const card = document.createElement("div");
@@ -20,7 +20,7 @@ export function noteCard(noteObj, container) {
   btnEdit.dataset.id = id;
 
   btnEdit.onclick = () => {
-    action.loadEdition({ name, markdown, id });
+    loadEdition({ name, markdown, id });
   };
 
   const btnDelete = document.createElement("button");
@@ -46,7 +46,7 @@ export function noteCard(noteObj, container) {
       // Make the convertion of string to number...
       const id = parseInt(e.target.parentElement.dataset.id);
       // ... and delete your note
-      action.deleteNote(id);
+      deleteNote(id);
     }
   };
   const nameTitle = document.createElement("h2");
@@ -89,5 +89,11 @@ export function noteCard(noteObj, container) {
   cardBody.appendChild(divCategories);
   cardBody.appendChild(btnViewNote);
 
-  container.appendChild(card);
+  if (container) {
+    container.appendChild(card);
+    return;
+  }
+
+  return card;
+  
 };
