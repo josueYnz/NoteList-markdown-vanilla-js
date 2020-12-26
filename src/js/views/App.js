@@ -8,12 +8,10 @@ export const App = (root) => {
     const appHeader = header();
     const main = mainContent();
 
-
     root.appendChild(appHeader);
     root.appendChild(main);
 
     const finish = performance.now();
 
-    console.log(finish - init);
-    
+    console.log(finish - init);    
 }

@@ -1,5 +1,5 @@
 import "./css/custom.css";
-import { App } from "./js/views/index.view";
+import { App } from "./js/views/App";
 
 const root = document.getElementById("root");
 

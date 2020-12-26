@@ -1,8 +1,8 @@
 import * as Helper from "../functions/helpers";
 import { notAvailable } from "../views/notAvailable";
 
-class UI {
-  alertMsg({
+const ui = (() => {
+  function alertMsg({
     msg,
     container,
     beforeElm = "",
@@ -32,7 +32,7 @@ class UI {
       }, 2000);
     }
   }
-  printNotes(arr, callback, container = "") {
+  function printNotes(arr, callback, container = "") {
     // Cleam Dom
     if (container) {
       Helper.cleanDom(container);
@@ -42,19 +42,14 @@ class UI {
 
     if (arrData) {
       // Helper.dataIterator(arr, (data) => callback(data, container));
-      if(container) {
-        for (const data of arr) {
-          callback(data, container);
-        }
-        return;
-      }
       for (const data of arr) {
-        return callback(data);
+        callback(data, container);
       }
       return;
     }
 
     notAvailable(container);
   }
-}
-export default UI;
+  return { alertMsg, printNotes };
+})();
+export default ui;

@@ -1,8 +1,7 @@
 import { setState, closeModal, addNote } from "../../functions/Actions";
-import Categories from "../../Classes/Categories";
+import categoriesInstance from "../../Classes/Categories";
 import { selectCategories } from "./subComponents/selectCategories";
 export const createNote = () => {
-  const categoriesInstance = new Categories();
   const modalDiv = document.createElement("div");
   modalDiv.classList.add("modal");
   modalDiv.id = "create-note-modal";
@@ -68,7 +67,7 @@ export const createNote = () => {
   input.placeholder = "Note name here.";
   input.oninput = (e) => {
     setState(e);
-  }
+  };
 
   const divCategories = document.createElement("div");
   divCategories.classList.add("form-group", "flex-column");
@@ -80,7 +79,7 @@ export const createNote = () => {
   const categories = selectCategories(categoriesInstance.getCategories())();
   categories.oninput = (e) => {
     setState(e);
-  }
+  };
 
   const divNote = document.createElement("div");
   divNote.classList.add("form-group", "flex-column");
@@ -94,7 +93,7 @@ export const createNote = () => {
   noteTextarea.id = "editor";
   noteTextarea.oninput = (e) => {
     setState(e);
-  }
+  };
 
   const btnSubmitDiv = document.createElement("div");
   btnSubmitDiv.classList.add("form-group", "flex-column");
@@ -105,8 +104,6 @@ export const createNote = () => {
   btnSubmit.type = "submit";
   btnSubmit.id = "submit";
   btnSubmit.textContent = "Create note";
-
-
 
   modalDiv.appendChild(modalContent);
 

@@ -1,14 +1,10 @@
-import Notes from "../Classes/Notes";
-import UI from "../Classes/UI";
-import Categories from "../Classes/Categories";
+import notes from "../Classes/Notes";
+import ui from "../Classes/UI";
+import categories from "../Classes/Categories";
 import { createNote } from "../views/components/createNoteForm";
 import { noteCard } from "../views/components/subComponents/noteCard";
 import { noteList } from "../views/components/noteList";
 import { selectCategories } from "../views/components/subComponents/selectCategories";
-const ui = new UI();
-const notes = new Notes();
-
-const categories = new Categories();
 
 let state = { name: "", content: "", category: "" };
 let editMode;

@@ -1,23 +1,24 @@
-class Categories {
-  _categories = JSON.parse(localStorage.getItem("categories")) || [];
+const categories = (() => {
+  let _categories = JSON.parse(localStorage.getItem("categories")) || [];
 
-  setCategories(category) {
+  function setCategories(category) {
     const newCategory = category.toLowerCase();
-    const exist = this._categories.some((c) => c === newCategory);
+    const exist = _categories.some((c) => c === newCategory);
     if (exist) {
       return;
     }
-    this._categories = [...this._categories, newCategory];
-    localStorage.setItem("categories", JSON.stringify(this._categories));
+    _categories = [..._categories, newCategory];
+    localStorage.setItem("categories", JSON.stringify(_categories));
   }
-  getCategories() {
-    const newArrCategories = Array.from(this._categories);
+  function getCategories() {
+    const newArrCategories = Array.from(_categories);
     // const modifiedArr = new Set(newArrCategories);
     return newArrCategories;
   }
-  removeCategorie(name) {
-    this._categories = this._categories.filter((c) => c !== name);
-    localStorage.setItem("categories", JSON.stringify(this._categories));
+  function removeCategorie(name) {
+    _categories = _categories.filter((c) => c !== name);
+    localStorage.setItem("categories", JSON.stringify(_categories));
   }
-}
-export default Categories;
+  return { setCategories, getCategories, removeCategorie };
+})();
+export default categories;

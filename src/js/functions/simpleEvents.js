@@ -1,14 +1,9 @@
 import { cleanDom, dataIterator, arrayData } from "./helpers";
-import Notes from "../Classes/Notes";
-import UI from "../Classes/UI";
-import Categories from "../Classes/Categories";
+import notes from "../Classes/Notes";
+import ui from "../Classes/UI";
+import categories from "../Classes/Categories";
 import { noteCard } from "../views/components/subComponents/noteCard";
 
-const notes = new Notes();
-
-const ui = new UI();
-
-const categories = new Categories();
 
 function showMenu(e) {
   e.preventDefault();
@@ -28,21 +23,6 @@ function closeMenu(e) {
   responsiveContent.classList.add("responsive-content");
 }
 
-function selectCategory(select) {
-  const categoriesArr = categories.getCategories();
-  const validateArr = arrayData(categoriesArr);
-
-  if (validateArr) {
-    for (const category of categoriesArr) {
-      const option = document.createElement("option");
-      option.value = category;
-      option.text = category;
-      select.appendChild(option);
-    }
-    return;
-  }
-}
-
 function randomContent() {
   cleanDom(document.getElementById("random-content"));
   // random notes
@@ -52,4 +32,4 @@ function randomContent() {
 
   ui.printNotes(notes.getRandomNote(), noteCard, randomNotes);
 }
-export { showMenu, closeMenu, selectCategory, randomContent };
+export { showMenu, closeMenu, randomContent };

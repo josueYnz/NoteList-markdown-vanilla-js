@@ -1,7 +1,5 @@
-import UI from "../../Classes/UI";
+import ui from "../../Classes/UI";
 import { noteCard } from "./subComponents/noteCard";
-
-const ui = new UI();
 
 export const noteList = (notes) => {
   const noteListContainer = document.getElementById("note-list");
