@@ -13,5 +13,5 @@ export const App = (root) => {
 
     const finish = performance.now();
 
-    console.log(finish - init);    
+    console.log(finish - init);
 }
