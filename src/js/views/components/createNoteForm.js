@@ -1,34 +1,9 @@
-import { setState, closeModal, addNote } from "../../functions/Actions";
+import { setState, addNote } from "../../functions/Actions";
 import categoriesInstance from "../../Classes/Categories";
 import { selectCategories } from "./subComponents/selectCategories";
+import Modal from "./subComponents/modal";
 export const createNote = () => {
-  const modalDiv = document.createElement("div");
-  modalDiv.classList.add("modal");
-  modalDiv.id = "create-note-modal";
 
-  const modalContent = document.createElement("div");
-  modalContent.classList.add("modal-content");
-
-  const btnDiv = document.createElement("div");
-
-  btnDiv.classList.add("flex-row", "justify-end", "items-center");
-
-  const btnClose = document.createElement("button");
-  btnClose.classList.add("btn", "btn-danger", "btn-circle");
-
-  btnClose.innerHTML = `
-      <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-       <path fill-rule="evenodd"
-         d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-      </svg>
-      `;
-  btnClose.onclick = (e) => {
-    e.preventDefault();
-    closeModal();
-  };
-
-  btnDiv.appendChild(btnClose);
-  modalContent.appendChild(btnDiv);
 
   const card = document.createElement("div");
   card.classList.add("card", "bg-white");
@@ -105,9 +80,7 @@ export const createNote = () => {
   btnSubmit.id = "submit";
   btnSubmit.textContent = "Create note";
 
-  modalDiv.appendChild(modalContent);
 
-  modalContent.appendChild(card);
   card.appendChild(cardBody);
   cardBody.appendChild(title);
   cardBody.appendChild(form);
@@ -126,6 +99,9 @@ export const createNote = () => {
 
   form.appendChild(btnSubmitDiv);
   btnSubmitDiv.appendChild(btnSubmit);
+
+  const modalDiv = Modal(card);
+
 
   document.querySelector("main").appendChild(modalDiv);
 };

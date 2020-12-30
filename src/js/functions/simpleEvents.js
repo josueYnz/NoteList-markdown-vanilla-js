@@ -2,7 +2,7 @@ import { cleanDom, dataIterator, arrayData } from "./helpers";
 import notes from "../Classes/Notes";
 import ui from "../Classes/UI";
 import categories from "../Classes/Categories";
-import { noteCard } from "../views/components/subComponents/noteCard";
+import { noteCard } from "../views/components/containers/noteCard";
 
 
 function showMenu(e) {

@@ -2,7 +2,7 @@ import notes from "../Classes/Notes";
 import ui from "../Classes/UI";
 import categories from "../Classes/Categories";
 import { createNote } from "../views/components/createNoteForm";
-import { noteCard } from "../views/components/subComponents/noteCard";
+import { noteCard } from "../views/components/containers/noteCard";
 import { noteList } from "../views/components/noteList";
 import { selectCategories } from "../views/components/subComponents/selectCategories";
 
@@ -24,15 +24,16 @@ function showModal() {
   modal.classList.add("block");
 }
 function closeModal() {
-  document.getElementById("create-note-modal").remove();
+  document.getElementById("modal-id").remove();
   if (document.getElementById("id-input")) {
     document.getElementById("id-input").remove();
     document.getElementById("id-label").remove();
-  }
-  editMode = false;
+    editMode = false;
   // document.getElementById("form-title").textContent = "Create note";
   // document.getElementById("submit").textContent = "Create note";
   restoreState();
+  }
+  
 }
 function addNote() {
   // date

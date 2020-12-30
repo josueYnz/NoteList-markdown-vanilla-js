@@ -1,4 +1,4 @@
-import { Navbar } from "./subComponents/navbar";
+import { Navbar } from "./containers/navbar";
 export const header = () => {
     const header = document.createElement("header");
     const navbar = Navbar();
