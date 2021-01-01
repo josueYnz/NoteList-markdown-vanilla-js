@@ -3,7 +3,7 @@ import ui from "../Classes/UI";
 import categories from "../Classes/Categories";
 import { createNote } from "../views/components/createNoteForm";
 import { noteCard } from "../views/components/containers/noteCard";
-import { noteList } from "../views/components/noteList";
+import { noteList } from "../views/components/dynamics/noteList";
 import { selectCategories } from "../views/components/subComponents/selectCategories";
 
 let state = { name: "", content: "", category: "" };

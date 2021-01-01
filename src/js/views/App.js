@@ -6,8 +6,9 @@ export const App = (root) => {
     // scripting index
     const init = performance.now();
     const appHeader = header();
-    const main = mainContent();
-
+    const page = noteListPage();
+    const main = mainContent(page)();
+    
     root.appendChild(appHeader);
     root.appendChild(main);
 

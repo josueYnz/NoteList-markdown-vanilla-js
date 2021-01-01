@@ -2,7 +2,6 @@ import { addCategory } from "../../../functions/Actions";
 import Modal from "../subComponents/modal";
 export const categoryForm = () => {
 
-
     const card = document.createElement("div");
     card.classList.add("card", "bg-white");
 
