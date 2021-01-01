@@ -20,6 +20,8 @@ export const categoryForm = () => {
     form.onsubmit = (e) => {
         e.preventDefault();
         addCategory();
+        form.reset();
+
     };
 
     const formGroup = document.createElement("div");
