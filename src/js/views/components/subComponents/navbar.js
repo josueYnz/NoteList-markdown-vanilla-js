@@ -33,21 +33,27 @@ export const Navbar = () => {
   );
   responsiveDiv.id = "resp-content";
 
-    const categoryModal = document.createElement("a");
-    categoryModal.textContent = "Create category";
-    categoryModal.href = "#";
-    categoryModal.onclick = (e) => {
-      categoryForm();
-    };
-    responsiveDiv.appendChild(categoryModal);
+  const searchLink = document.createElement("a");
+  searchLink.textContent = "Search";
+  searchLink.href = "#/search";
+  responsiveDiv.appendChild(searchLink);
 
-    const createNoteNav = document.createElement("a");
-    createNoteNav.textContent = "Create note";
-    createNoteNav.href = "#";
-    createNoteNav.onclick = (e) => {
-      createNote();
-    };
-    responsiveDiv.appendChild(createNoteNav);
+  const categoryModal = document.createElement("a");
+  categoryModal.textContent = "Create category";
+  categoryModal.href = "#";
+  categoryModal.onclick = (e) => {
+    categoryForm();
+  };
+  responsiveDiv.appendChild(categoryModal);
+
+  const createNoteNav = document.createElement("a");
+  createNoteNav.textContent = "Create note";
+  createNoteNav.href = "#";
+  createNoteNav.onclick = (e) => {
+    createNote();
+  };
+  responsiveDiv.appendChild(createNoteNav);
+
 
   // crear form modal con scripting
   const btnClose = document.createElement("button");

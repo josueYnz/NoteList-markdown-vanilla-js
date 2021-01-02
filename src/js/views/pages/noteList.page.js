@@ -1,15 +1,11 @@
 import notes from "../../Classes/Notes";
 import { noteList } from "../components/dynamics/noteList";
-import { mainContent } from "../components/mainContent";
 import { searchEvent } from "../../functions/simpleEvents";
 export const noteListPage = () => {
 
     const existNotes = notes.getNotes();
 
-    const card = document.createElement("div");
-
-    const cardBody = document.createElement("div");
-    cardBody.classList.add("card-body");
+    const searchDiv = document.createElement("div");
 
     const title = document.createElement("h1");
     title.classList.add("text-center");
@@ -42,11 +38,10 @@ export const noteListPage = () => {
     formDiv.appendChild(labelSearch);
     formDiv.appendChild(inputSearch);
 
-    cardBody.appendChild(title);
-    cardBody.appendChild(formDiv);
-    cardBody.appendChild(divNotes);
-    card.appendChild(cardBody);
+    searchDiv.appendChild(title);
+    searchDiv.appendChild(formDiv);
+    searchDiv.appendChild(divNotes);
 
-    return card;
+    return searchDiv;
 
 }

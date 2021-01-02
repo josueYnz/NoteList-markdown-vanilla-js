@@ -5,14 +5,16 @@ import { cleanDom } from "../../functions/helpers";
 export const mainContent = (content = "") => {
   const main = document.createElement("main");
   main.classList.add("container");
-  cleanDom(main);
+  const getMain = document.querySelector("main");
+  const finalMain = getMain ? getMain : main;
+  cleanDom(finalMain);
 
   // const allNotes = notes.getNotes();
 
   // const noteContent = noteList(allNotes)();
 
-  main.appendChild(content);
+  finalMain.appendChild(content);
   return () => {
-    return main;
+    return finalMain;
   }
 };
