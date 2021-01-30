@@ -78,7 +78,11 @@ li {
     font-size: medium;
   }
 }
-a {
+button {
+  cursor: pointer;
+  background-color: transparent;
+}
+a, button {
   text-decoration: none;
   color: var(--main-gray-3);
   font-family: var(--font-main);
@@ -86,15 +90,12 @@ a {
   text-align: justify;
   font-style: italic;
 }
-a:hover {
+a:hover, button:hover {
   color: rgb(99, 99, 99);
 }
 svg {
   width: 20px;
   height: 20px;
-}
-button {
-  cursor: pointer;
 }
 img {
   max-width: 100%;
@@ -177,13 +178,13 @@ img,
   display: flex;
   flex-direction: row;
 }
-.navbar a {
+.navbar a, .navbar button {
   color: var(--main-gray-2);
   margin: 0 0.77rem;
   padding: 0.7rem 0;
   font-style: normal;
 }
-.navbar a:hover {
+.navbar a:hover, .navbar button:hover {
   color: var(--main-gray-3);
 }
 .navbar .brand {
@@ -203,7 +204,7 @@ img,
   .navbar .ml-auto {
     margin: inherit;
   }
-  .navbar a,
+  .navbar a, .navbar button,
   .navbar .brand {
     margin-right: inherit;
 

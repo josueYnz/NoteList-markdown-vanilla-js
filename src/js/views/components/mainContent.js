@@ -1,4 +1,3 @@
-import notes from "../../Classes/Notes";
 // import { noteList } from "./noteList";
 import { cleanDom } from "../../functions/helpers";
 

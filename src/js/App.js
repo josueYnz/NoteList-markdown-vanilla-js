@@ -11,13 +11,13 @@ export const App = (root) => {
     const page = indexPage();
     const main = mainContent(page)();
     
-    root.appendChild(appHeader);
-    root.appendChild(main);
-
     router(window.location.hash);
     window.addEventListener("hashchange", () => {
         router(window.location.hash);
     });
+
+    root.appendChild(appHeader);
+    root.appendChild(main);
 
     const finish = performance.now();
 
