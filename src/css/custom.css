@@ -81,6 +81,8 @@ li {
 button {
   cursor: pointer;
   background-color: transparent;
+  outline: none;
+  border: none;
 }
 a, button {
   text-decoration: none;

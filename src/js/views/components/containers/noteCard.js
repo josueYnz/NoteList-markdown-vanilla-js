@@ -38,13 +38,9 @@ export const noteCard = (noteObj, container = "") => {
   btnDelete.onclick = (e) => {
     e.preventDefault();
     // if the clicked element have a "data-id"
-    if (
-      e.target.dataset.id ||
-      e.target.parentElement.dataset.id ||
-      e.target.parentElement.parentElement.dataset.id
-    ) {
+    if (btnDelete.dataset.id) {
       // Make the convertion of string to number...
-      const id = parseInt(e.target.parentElement.dataset.id);
+      const id = parseInt(btnDelete.dataset.id);
       // ... and delete your note
       deleteNote(id);
     }
