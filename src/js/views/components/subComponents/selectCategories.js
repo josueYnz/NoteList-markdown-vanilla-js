@@ -14,7 +14,7 @@ export const selectCategories = (categoriesArr) => {
   function categoryComponent(category, container) {
     const optionDefault = document.createElement("option");
     optionDefault.value = "";
-    optionDefault.text = "";
+    optionDefault.text = "-- Select a category --";
     container.appendChild(optionDefault);
     const option = document.createElement("option");
     option.value = category;
