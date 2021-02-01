@@ -9,10 +9,7 @@ export const noteList = (notes) => {
 
   const noteListContainer = document.getElementById("note-list");
 
-
   const noteContent = noteListContainer ? noteListContainer : createNoteList;
-
-
 
   ui.printNotes(notes, noteCard, noteContent);
   return () => {

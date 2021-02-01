@@ -197,8 +197,8 @@ function addCategory() {
     return;
   }
   categories.setCategories(newCategory);
-  closeModal();
   selectCategories(categories.getCategories());
+  closeModal();
 }
 export {
   setState,

@@ -11,9 +11,7 @@ const categories = (() => {
     localStorage.setItem("categories", JSON.stringify(_categories));
   }
   function getCategories() {
-    const newArrCategories = Array.from(_categories);
-    // const modifiedArr = new Set(newArrCategories);
-    return newArrCategories;
+    return _categories;
   }
   function removeCategorie(name) {
     _categories = _categories.filter((c) => c !== name);

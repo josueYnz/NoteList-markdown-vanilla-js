@@ -458,51 +458,51 @@ input[type="checkbox"] {
   box-shadow: var(--shadow-small);
 }
 .btn:hover {
-  box-shadow: var(--shadow-medium);
+  box-shadow: var(--shadow-medium) !important;
 }
 .btn-normal {
-  padding: 0.8rem 2rem;
-  margin: 0;
-  font-size: large;
-  border-radius: var(--rounded-full);
+  padding: 0.8rem 2rem !important;
+  margin: 0 !important;
+  font-size: large !important;
+  border-radius: var(--rounded-full) !important;
 }
 .btn-lg {
-  padding: 1rem 2rem;
-  margin: 0;
-  font-size: larger;
-  border-radius: var(--rounded-full);
+  padding: 1rem 2rem !important;
+  margin: 0 !important;
+  font-size: larger !important;
+  border-radius: var(--rounded-full) !important;
 }
 .btn-circle {
-  padding: 0.4rem 0.4rem;
-  margin: 0;
-  border-radius: var(--rounded-full);
+  padding: 0.4rem 0.4rem !important;
+  margin: 0 !important;
+  border-radius: var(--rounded-full) !important;
 }
 .btn-full {
-  width: 100%;
+  width: 100% !important;
 }
 .btn-danger {
-  border: 1px solid var(--red-danger);
-  color: var(--red-danger);
+  border: 1px solid var(--red-danger) !important;
+  color: var(--red-danger) !important;
 }
 .btn-danger:hover {
-  background-color: var(--red-danger);
-  color: var(--light-white);
+  background-color: var(--red-danger) !important;
+  color: var(--light-white) !important;
 }
 .btn-success {
-  border: 1px solid var(--green);
-  color: var(--green);
+  border: 1px solid var(--green) !important;
+  color: var(--green) !important;
 }
 .btn-success:hover {
-  background-color: var(--green);
-  color: var(--light-white);
+  background-color: var(--green) !important;
+  color: var(--light-white) !important;
 }
 .btn-blue {
-  border: 1px solid var(--blue);
-  color: var(--blue);
+  border: 1px solid var(--blue) !important;
+  color: var(--blue) !important;
 }
 .btn-blue:hover {
-  background-color: var(--blue);
-  color: var(--light-white);
+  background-color: var(--blue) !important;
+  color: var(--light-white) !important;
 }
 .btn-orange {
   border: 1px solid var(--orange);

@@ -43,49 +43,56 @@ const notes = (() => {
       return [];
     }
   }
-  function searchNotes(word) {
+  function searchNotes({ word = "", category = "" }) {
     // Create a new array with the params of search
-    return _notesElements.filter((note) => {
-      // Create a regEx global
-      const regex = new RegExp(word, "gi");
-      // Search the params in name and note
-      return note.name.match(regex) || note.note.match(regex);
-    });
+    return _notesElements
+      .filter((note) => {
+        // Create a regEx global
+        const regex = new RegExp(word, "gi");
+        // Search the params in name and note
+        return note.name.match(regex) || note.note.match(regex);
+      })
+      .filter((note) => {
+        if (category === "") {
+          return _notesElements;
+        }
+        return note.category === category;
+      });
   }
-  function sortNotes(type) {
-    const result = Array.from(_notesElements);
-    switch (type) {
-      case "asc":
-        return result.sort((a, b) => {
-          return a.name[0].localeCompare(b.name[0]);
-        });
+  // function sortNotes(type) {
+  //   const result = Array.from(_notesElements);
+  //   switch (type) {
+  //     case "asc":
+  //       return result.sort((a, b) => {
+  //         return a.name[0].localeCompare(b.name[0]);
+  //       });
 
-      case "desc":
-        return result.sort((a, b) => {
-          return b.name[0].localeCompare(a.name[0]);
-        });
+  //     case "desc":
+  //       return result.sort((a, b) => {
+  //         return b.name[0].localeCompare(a.name[0]);
+  //       });
 
-      case "old":
-        return result.sort((a, b) => {
-          return a.id - b.id;
-        });
+  //     case "old":
+  //       return result.sort((a, b) => {
+  //         return a.id - b.id;
+  //       });
 
-      case "recent":
-        return result.sort((a, b) => {
-          return b.id - a.id;
-        });
+  //     case "recent":
+  //       return result.sort((a, b) => {
+  //         return b.id - a.id;
+  //       });
 
-      default:
-        return _notesElements;
-    }
-  }
-  function filterByCategory(category) {
-    if (category === "") {
-      return _notesElements;
-    }
-    const arrCt = _notesElements.filter((n) => n.category === category);
-    return arrCt;
-  }
+  //     default:
+  //       return _notesElements;
+  //   }
+  // }
+  // function filterByCategory(category) {
+  //   if (category === "") {
+  //     return _notesElements;
+  //   }
+  //   const arrCt = _notesElements.filter(n => n.category === category);
+  //   return arrCt;
+  // }
   function removeNote(id) {
     // delete select note-id and make a new array
     _notesElements = _notesElements.filter((n) => n.id !== id);
@@ -104,6 +111,13 @@ const notes = (() => {
     });
     localStorage.setItem("notes", JSON.stringify(_notesElements));
   }
-  return { addNote, getNotes, getRandomNote, searchNotes, sortNotes, filterByCategory, removeNote, editNote, };
+  return {
+    addNote,
+    getNotes,
+    getRandomNote,
+    searchNotes,
+    removeNote,
+    editNote,
+  };
 })();
 export default notes;

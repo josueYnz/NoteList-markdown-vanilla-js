@@ -1,7 +1,5 @@
 import notes from "../../Classes/Notes";
 import { noteList } from "../components/dynamics/noteList";
-import { mainContent } from "../components/mainContent";
-import { searchEvent } from "../../functions/simpleEvents";
 export const indexPage = () => {
 
     const existNotes = notes.getNotes();
@@ -12,13 +10,10 @@ export const indexPage = () => {
     title.classList.add("text-center");
     title.textContent = "NoteList Markdown.";
    
-
     const divNotes = document.createElement("div");
     const allNotes = noteList(existNotes)();
 
-
     divNotes.appendChild(allNotes);
-
 
     index.appendChild(title);
 

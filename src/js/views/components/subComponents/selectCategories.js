@@ -1,28 +1,28 @@
 import { cleanDom, arrayData } from "../../../functions/helpers";
+import ui from "../../../Classes/UI";
 
 export const selectCategories = (categoriesArr) => {
+  const createSelect = document.createElement("select");
+  createSelect.name = "category";
+  createSelect.id = "select-category";
 
-  const select = document.createElement("select");
-  select.name = "category";
-  // select.id = "select-category";
+  const selectExist = document.getElementById("select-category");
 
-  cleanDom(select);
-  
-  const validateArr = arrayData(categoriesArr);
+  const finalSelect = selectExist ? selectExist : createSelect;
+
   const optionDefault = document.createElement("option");
   optionDefault.value = "";
   optionDefault.text = "--- Select a category ---";
-  select.appendChild(optionDefault);
-
-  if (validateArr) {
-    for (const category of categoriesArr) {
-      const option = document.createElement("option");
-      option.value = category;
-      option.text = category;
-      select.appendChild(option);
-    }
+  finalSelect.appendChild(optionDefault);
+  function categoryComponent(category, container) {
+    const option = document.createElement("option");
+    option.value = category;
+    option.text = category;
+    container.appendChild(option);
   }
+
+  ui.printNotes(categoriesArr, categoryComponent, finalSelect);
   return () => {
-    return select;
+    return finalSelect;
   };
 };

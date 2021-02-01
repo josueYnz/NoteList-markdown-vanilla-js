@@ -1,9 +1,7 @@
-import { cleanDom, dataIterator, arrayData } from "./helpers";
+import { cleanDom } from "./helpers";
 import notes from "../Classes/Notes";
 import ui from "../Classes/UI";
-import categories from "../Classes/Categories";
 import { noteCard } from "../views/components/containers/noteCard";
-import { noteList } from "../views/components/dynamics/noteList";
 
 
 function showMenu(e) {
@@ -33,9 +31,5 @@ function randomContent() {
 
   ui.printNotes(notes.getRandomNote(), noteCard, randomNotes);
 }
-function searchEvent(e) {
-  const searchParam = e.target.value;
-  const searchResult = notes.searchNotes(searchParam);
-  noteList(searchResult);
-}
-export { showMenu, closeMenu, randomContent, searchEvent };
+
+export { showMenu, closeMenu, randomContent };
