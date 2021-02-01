@@ -6,15 +6,17 @@ export const selectCategories = (categoriesArr) => {
   createSelect.name = "category";
   createSelect.id = "select-category";
 
-  const selectExist = document.getElementById("select-category");
+
+  const selectExist = document.querySelector('[name="select-category"]');
 
   const finalSelect = selectExist ? selectExist : createSelect;
 
-  const optionDefault = document.createElement("option");
-  optionDefault.value = "";
-  optionDefault.text = "--- Select a category ---";
-  finalSelect.appendChild(optionDefault);
+
   function categoryComponent(category, container) {
+    const optionDefault = document.createElement("option");
+    optionDefault.value = "";
+    optionDefault.text = "";
+    container.appendChild(optionDefault);
     const option = document.createElement("option");
     option.value = category;
     option.text = category;
