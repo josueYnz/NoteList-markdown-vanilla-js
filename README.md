@@ -5,6 +5,5 @@ A list of notes with markdown as the writing language, developed with vanilla js
 - Create notes with markdown syntax.
 - Create categories.
 - Filter by categories.
-- Sort by asc, desc and date order.
 ## Deploy
 [NoteList](https://notelist-vanilla-js.netlify.app/)
