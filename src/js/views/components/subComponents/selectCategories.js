@@ -1,4 +1,3 @@
-import { cleanDom, arrayData } from "../../../functions/helpers";
 import ui from "../../../Classes/UI";
 
 export const selectCategories = (categoriesArr) => {
